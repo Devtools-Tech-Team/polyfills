@@ -1,0 +1,15 @@
+{
+	"name": "polyfills",
+	"version": "1.0.0",
+	"description": "This repo contains implementation of commonly asked Polyfills in Frontend interviews",
+	"main": "index.js",
+	"repository": "git@github.com:Devtools-Tech-Team/polyfills.git",
+	"author": "Yomesh Gupta <yomesh.gupta@gmail.com> (http://www.yomeshgupta.com/)",
+	"license": "MIT",
+	"devDependencies": {
+		"jest": "^26.1.0"
+	},
+	"scripts": {
+		"test": "jest"
+	}
+}

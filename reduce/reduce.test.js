@@ -7,19 +7,20 @@ describe('Error Conditions', () => {
 		Array.prototype.customReduce = reduce;
 	});
 
-	test('Check if this exists, reduce is not called on null or undefined', () => {
-		var caller = void 0;
+	// 1
+	// test('Check if this exists, reduce is not called on null or undefined', () => {
+	// 	expect([].customReduce(sum)).toThrow(TypeError);
+	// });
 
-		expect(() => caller.customReduce(sum)).toThrow(TypeError);
-	});
+	// 2
+	// test('Check if callback is a function', () => {
+	// 	expect(() => [].customReduce()).toThrow(TypeError);
+	// });
 
-	test('Check if callback is a function', () => {
-		expect(() => [].customReduce()).toThrow(TypeError);
-	});
-
-	test('Reduce on empty array with no initialValue', () => {
-		expect(() => [].customReduce(sum)).toThrow(TypeError);
-	});
+	// 3
+	// test('Reduce on empty array with no initialValue', () => {
+	// 	expect(() => [].customReduce(sum)).toThrow(TypeError);
+	// });
 });
 
 describe('Reduce Functionality', () => {
@@ -27,15 +28,44 @@ describe('Reduce Functionality', () => {
 		Array.prototype.customReduce = reduce;
 	});
 
-	test('Invoked without initialValue', () => {
-		var caller = [1, 2, 3];
+	// 4
+	// test('Invoked on empty array with initialValue, returns initialValue', () => {
+	// 	var initialValue = 5;
+	// 	expect([].customReduce(sum, initialValue)).toBe(initialValue);
+	// });
 
-		expect(caller.customReduce(sum)).toBe(6);
-	});
+	// 5
+	// test('Invoked without initialValue', () => {
+	// 	var caller = [1, 2, 3];
 
-	test('Invoked with initialValue', () => {
-		var caller = [1, 2, 3];
+	// 	expect(caller.customReduce(sum)).toBe(6);
+	// });
 
-		expect(caller.customReduce(sum, 1)).toBe(7);
-	});
+	// 6
+	// test('Invoked with initialValue', () => {
+	// 	var caller = [1, 2, 3];
+
+	// 	expect(caller.customReduce(sum, 1)).toBe(7);
+	// });
+
+	// 7
+	// test('Custom Test Case | Reduce Promise', () => {
+	// 	function first() {
+	// 		return Promise.resolve(1);
+	// 	}
+	// 	function second(v) {
+	// 		return Promise.resolve(v + 2);
+	// 	}
+	// 	function third(v) {
+	// 		return Promise.resolve(v + 3);
+	// 	}
+	// 	function fourth(v) {
+	// 		return Promise.resolve(v + 4);
+	// 	}
+
+	// 	var promises = [first, second, third, fourth];
+	// 	var answer = promises.reduce((acc, current) => acc.then(current), Promise.resolve());
+
+	// 	expect(answer).resolves.toEqual(10);
+	// });
 });

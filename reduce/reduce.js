@@ -1,6 +1,10 @@
+'use strict';
+
 function reduce(callback, initialValue) {
 	if (this === null) {
-		throw new TypeError('Array.prototype.reduce called on null or undefined');
+		throw new TypeError(
+			'Array.prototype.reduce called on null or undefined'
+		);
 	}
 
 	if (!callback || typeof callback !== 'function') {

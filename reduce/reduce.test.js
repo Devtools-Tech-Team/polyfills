@@ -8,9 +8,12 @@ describe('Error Conditions', () => {
 	});
 
 	// 1
-	// test('Check if this exists, reduce is not called on null or undefined', () => {
-	// 	expect([].customReduce(sum)).toThrow(TypeError);
-	// });
+	test('Check if this exists, reduce is not called on null or undefined', () => {
+		function init() {
+			Array.prototype.customReduce.call(null, sum, 2);
+		}
+		expect(init).toThrow(TypeError);
+	});
 
 	// 2
 	// test('Check if callback is a function', () => {

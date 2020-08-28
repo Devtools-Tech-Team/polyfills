@@ -1,7 +1,7 @@
 'use strict';
 
 function reduce(callback, initialValue) {
-	if (this === null) {
+	if (this === null || this === undefined) {
 		throw new TypeError(
 			'Array.prototype.reduce called on null or undefined'
 		);
@@ -11,27 +11,25 @@ function reduce(callback, initialValue) {
 		throw new TypeError(`${callback} is not a function`);
 	}
 
-	if (!this.length && initialValue) {
-		return initialValue;
-	} else if (!this.length && arguments.length < 2) {
-		throw new TypeError('Reduce of empty array with no initial value');
+	if (!this.length) {
+		if (arguments.length < 2) {
+			throw new TypeError('Reduce of empty array with no initial value');
+		} else if (arguments.length === 2) {
+			return initialValue;
+		}
 	}
 
 	var k = 0;
-	var value = initialValue;
-
-	if (arguments.length < 2) {
-		value = this[k++];
-	}
+	var acc = arguments.length < 2 ? this[k++] : initialValue;
 
 	while (k < this.length) {
 		if (Object.prototype.hasOwnProperty.call(this, k)) {
-			value = callback(value, this[k], k, this);
+			acc = callback(acc, this[k], k, this);
 		}
 		k++;
 	}
 
-	return value;
+	return acc;
 }
 
 module.exports = reduce;

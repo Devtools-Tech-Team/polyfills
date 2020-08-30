@@ -38,17 +38,17 @@ describe('Reduce Functionality', () => {
 	});
 
 	// 5
-	test('Invoked without initialValue', () => {
-		var caller = [1, 2, 3];
-
-		expect(caller.customReduce(sum)).toBe(6);
-	});
-
-	// 6
 	test('Invoked with initialValue', () => {
 		var caller = [1, 2, 3];
 
 		expect(caller.customReduce(sum, 1)).toBe(7);
+	});
+
+	// 6
+	test('Invoked without initialValue', () => {
+		var caller = [1, 2, 3];
+
+		expect(caller.customReduce(sum)).toBe(6);
 	});
 
 	// 7

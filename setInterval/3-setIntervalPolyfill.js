@@ -1,33 +1,42 @@
 const {
     setIntervalPolyfill,
     clearIntervalPolyfill
-} = (()=>{
+}= (()=>{
 
-    let intervalId = 0;
-    const intervalMap = {};
+    // Closure Scope.
+    var intervalId = 0;
+    var intervalMap = {}
 
-    const setIntervalPolyfill = (callbackFn,timer) => {
+    function setIntervalPolyfill (callbackFn, delay=0) {
 
-        const id = intervalId++;
+        // Throw error if callback is not a function.
+        if(typeof callbackFn !== "function"){
+            throw new TypeError('"callback" argument must be a funtion.')
+        }
+
+        var id = intervalId++;
         intervalMap[id] = true;
 
-        const repeat = () => {
+        // to be passed as paremeters in callback function call.
+        var args = Array.prototype.slice.call(arguments,2);
+
+        (function repeat(){
             setTimeout(
-                () => {
-                    if(!intervalMap[id]){
-                        return;
-                    }
-                    callbackFn();
-                    repeat();
+                ()=>{
+                    if(intervalMap[id]){
+                        callbackFn(args);
+                        repeat();
+                    }  
                 },
-                timer
-            )
-        }
-        repeat();
+                delay
+            );
+        })();
+
         return id;
     }
 
-    const clearIntervalPolyfill = (intervalId) => {
+
+    function clearIntervalPolyfill(intervalId) {
         delete intervalMap[intervalId];
     }
 
@@ -47,15 +56,17 @@ const {
 
 
 
-let counter = 0;
+let counter = 0
+let intervalID;
 
-const intervalId = setIntervalPolyfill(
-    ()=>{
-        console.log('After Every 1 sec');
-        counter++;
-        if(counter >= 3){
-            clearIntervalPolyfill(intervalId)
-        }
-    },
-    1000
-)
+function greeting(name){
+    counter++;
+    console.log("Counter is : "+ counter+num);
+    console.log("Hello "+ name);
+    if(counter >= 3){
+        clearIntervalPolyfill(intervalID)
+    }
+}
+
+
+intervalID = setIntervalPolyfill(printCounter, 1000,"Puneet");

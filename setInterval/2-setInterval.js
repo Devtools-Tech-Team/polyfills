@@ -6,7 +6,6 @@ let intervalID;
 
 function greeting(name){
     counter++;
-    console.log("Counter is : "+ counter+num);
     console.log("Hello "+ name);
     if(counter >= 3){
         clearInterval(intervalID)
@@ -14,4 +13,4 @@ function greeting(name){
 }
 
 
-intervalID = setInterval(printCounter, 1000,"Puneet");
+intervalID = setInterval(greeting, 1000,"Puneet");

@@ -2,7 +2,6 @@
 
 function greeting(name){
     console.log('Hello ' + name)
-    console.log('How are you?')
 }
 
 const timeoutId = setTimeout(greeting , 1000 , "Puneet");

@@ -1,7 +1,4 @@
-const {
-    setIntervalPolyfill,
-    clearIntervalPolyfill
-}= (()=>{
+function createSetIntervalPolyfill() {
 
     // Closure Scope.
     var intervalId = 0;
@@ -15,28 +12,31 @@ const {
         }
 
         var id = intervalId++;
-        intervalMap[id] = true;
+        
 
         // to be passed as paremeters in callback function call.
         var args = Array.prototype.slice.call(arguments,2);
 
-        (function repeat(){
-            setTimeout(
-                ()=>{
-                    if(intervalMap[id]){
+        function repeat(){
+            intervalMap[id] = setTimeout(
+                () => {
                         callbackFn(args);
                         repeat();
-                    }  
                 },
                 delay
             );
-        })();
+            // console.log('From Repeat')
+            // console.log(intervalMap[id]);
+        }
+        repeat();
 
         return id;
     }
 
 
     function clearIntervalPolyfill(intervalId) {
+        // console.log(intervalMap[intervalId]);
+        clearTimeout(intervalMap[intervalId])
         delete intervalMap[intervalId];
     }
 
@@ -44,13 +44,16 @@ const {
         setIntervalPolyfill,
         clearIntervalPolyfill
     }
-})();
+}
 
 
 
 
 
-
+const {
+    setIntervalPolyfill,
+    clearIntervalPolyfill
+} = createSetIntervalPolyfill();
 
 
 
@@ -61,7 +64,6 @@ let intervalID;
 
 function greeting(name){
     counter++;
-    console.log("Counter is : "+ counter+num);
     console.log("Hello "+ name);
     if(counter >= 3){
         clearIntervalPolyfill(intervalID)
@@ -69,4 +71,4 @@ function greeting(name){
 }
 
 
-intervalID = setIntervalPolyfill(printCounter, 1000,"Puneet");
+intervalID = setIntervalPolyfill(greeting, 1000,"Puneet");

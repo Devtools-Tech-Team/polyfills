@@ -11,7 +11,9 @@ yarn install
 yarn run test
 ```
 
-1. [Reduce](https://github.com/Devtools-Tech-Team/polyfills/tree/master/reduce)
+## List of polyfills
+
+  1. [Reduce](https://github.com/Devtools-Tech-Team/polyfills/tree/master/reduce)
 
 ## Quick Links
 

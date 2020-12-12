@@ -1,16 +1,17 @@
+var counter = 0;
+var intervalId;
 
-
-
-let counter = 0
-let intervalID;
-
-function greeting(name){
+function greeting(){
     counter++;
-    console.log("Hello "+ name);
-    if(counter >= 3){
-        clearInterval(intervalID)
+    console.log("Hello Puneet");
+    if(counter >=3){
+        clearInterval(intervalId);
     }
 }
 
+intervalId = setInterval(greeting, 1000);
 
-intervalID = setInterval(greeting, 1000,"Puneet");
+
+
+
+

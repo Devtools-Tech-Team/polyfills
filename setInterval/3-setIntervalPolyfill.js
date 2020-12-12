@@ -1,74 +1,69 @@
-function createSetIntervalPolyfill() {
+function createSetIntervalPolyfill(){
 
-    // Closure Scope.
-    var intervalId = 0;
-    var intervalMap = {}
 
-    function setIntervalPolyfill (callbackFn, delay=0) {
+    // closure
+    var intervalID = 0;
+    var intervalMap = {};
 
-        // Throw error if callback is not a function.
-        if(typeof callbackFn !== "function"){
-            throw new TypeError('"callback" argument must be a funtion.')
+
+    function setIntervalPolyfill(callbackFn , delay = 0, ...args){
+
+        if(typeof callbackFn !== 'function'){
+            throw new TypeError("'callback' should be a function")
         }
 
-        var id = intervalId++;
-        
+        // Unique
+        var id = intervalID++;
 
-        // to be passed as paremeters in callback function call.
-        var args = Array.prototype.slice.call(arguments,2);
 
         function repeat(){
             intervalMap[id] = setTimeout(
-                () => {
-                        callbackFn(args);
+                ()=> {
+                    callbackFn(...args)
+                    // Terminating
+                    if(intervalMap[id]){
                         repeat();
+                    }
                 },
                 delay
-            );
-            // console.log('From Repeat')
-            // console.log(intervalMap[id]);
+            )
         }
         repeat();
 
-        return id;
+
+        return id
+
     }
 
+    function clearIntervalPolyfill(intervalID){
+        clearTimeout(intervalMap[intervalID]);
+        delete intervalMap[intervalID];
 
-    function clearIntervalPolyfill(intervalId) {
-        // console.log(intervalMap[intervalId]);
-        clearTimeout(intervalMap[intervalId])
-        delete intervalMap[intervalId];
     }
+
 
     return {
         setIntervalPolyfill,
         clearIntervalPolyfill
     }
+
 }
-
-
-
-
 
 const {
     setIntervalPolyfill,
     clearIntervalPolyfill
-} = createSetIntervalPolyfill();
-
-
-
-
+} = createSetIntervalPolyfill()
 
 let counter = 0
 let intervalID;
 
 function greeting(name){
     counter++;
-    console.log("Hello "+ name);
+    console.log("Hello" , name);
     if(counter >= 3){
         clearIntervalPolyfill(intervalID)
     }
 }
 
 
-intervalID = setIntervalPolyfill(greeting, 1000,"Puneet");
+intervalID = setIntervalPolyfill("", 1000 , "Yomesh");

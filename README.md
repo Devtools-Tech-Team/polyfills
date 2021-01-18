@@ -15,6 +15,11 @@ yarn run test
 
   1. [Reduce](https://github.com/Devtools-Tech-Team/polyfills/tree/master/reduce)
 
+  2. [SetInterval](https://github.com/Devtools-Tech-Team/polyfills/tree/master/setInterval)
+
+      YouTube Link: Part 1 - https://www.youtube.com/watch?v=CAzMsXUe2I0
+                    Part 2 - https://www.youtube.com/watch?v=79yHvDzVA_I
+
 ## Quick Links
 
 Interview questions: https://code.devtools.tech/questions/all?ref=fiqdl-ql

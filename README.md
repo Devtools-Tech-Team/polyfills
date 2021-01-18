@@ -20,8 +20,8 @@ yarn run test
   2. [SetInterval](https://github.com/Devtools-Tech-Team/polyfills/tree/master/setInterval)
 
       SetTimeout and SetInterval are very crucial functions when we talk about Javascript.
-      In the part 1, we have explained setTimeout and setInterval with a few examples.
-      In the part 2, we have implemented setInterval with the help of setTimeout.
+      In the part 1, we have `explained setTimeout and setInterval` with a few examples.
+      In the part 2, we have `implemented setInterval with the help of setTimeout`.
 
       YouTube Link:
 

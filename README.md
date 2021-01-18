@@ -15,6 +15,8 @@ yarn run test
 
   1. [Reduce](https://github.com/Devtools-Tech-Team/polyfills/tree/master/reduce)
 
+      `Array.prototype.reduce` is a commonly used high order function. We are going to look at how we can create our own implementation of this function, covering all the use-cases and error conditions.
+
       YouTube Link: https://www.youtube.com/watch?v=EgN4qwAQ0eM
 
   2. [SetInterval](https://github.com/Devtools-Tech-Team/polyfills/tree/master/setInterval)
